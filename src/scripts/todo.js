@@ -11,7 +11,13 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 //funcoes
 
 const addNewTodo = (text) =>{
-    
+    let nameTodo = todoList.querySelectorAll('h3')  
+
+    if(Array.from(nameTodo).some(h3 => h3.textContent.trim() == text.trim())){
+        alert('Você ja adicionou isso na lista')
+        return
+    }
+
     todoList.innerHTML += `
         <div class="todo">
             <h3>${text}</h3>
