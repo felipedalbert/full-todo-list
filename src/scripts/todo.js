@@ -10,8 +10,25 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 
 //funcoes
 
-const saveaddNewTodo = (text) =>{
+const addNewTodo = (text) =>{
     
+    todoList.innerHTML += `
+        <div class="todo">
+            <h3>${text}</h3>
+            <button class="finish-todo">
+                <i class="fa-solid fa-check"></i>
+            </button>
+            <button class="edit-todo">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+            <button class="remove-todo">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    `
+
+    todoInput.value = ''
+    todoInput.focus()
 }
 
 //eventos
