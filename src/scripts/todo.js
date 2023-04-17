@@ -48,4 +48,15 @@ todoForm.addEventListener('submit', (e)=>{
     }
 })
 
+document.addEventListener('click', (e) =>{
+    const targetEl = e.target
+    const parentEl = targetEl.closest('.todo')
+
+    if(targetEl.classList.contains('finish-todo')){
+        parentEl.classList.toggle('done')
+    }
+})
+
+
+
 
