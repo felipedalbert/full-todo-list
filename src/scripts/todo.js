@@ -21,13 +21,13 @@ const addNewTodo = (text) =>{
     todoList.innerHTML += `
         <div class="todo">
             <h3>${text}</h3>
-            <button class="finish-todo">
+            <button class="finish-todo" title="check sua tarefa">
                 <i class="fa-solid fa-check"></i>
             </button>
-            <button class="edit-todo">
+            <button class="edit-todo" title="edite sua tarefa>
                 <i class="fa-solid fa-pen"></i>
             </button>
-            <button class="remove-todo">
+            <button class="remove-todo" title="exclua sua tarefa>
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
