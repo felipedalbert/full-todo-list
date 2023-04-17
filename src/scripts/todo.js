@@ -24,10 +24,10 @@ const addNewTodo = (text) =>{
             <button class="finish-todo" title="check sua tarefa">
                 <i class="fa-solid fa-check"></i>
             </button>
-            <button class="edit-todo" title="edite sua tarefa>
+            <button class="edit-todo" title="edite sua tarefa">
                 <i class="fa-solid fa-pen"></i>
             </button>
-            <button class="remove-todo" title="exclua sua tarefa>
+            <button class="remove-todo" title="exclua sua tarefa">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -54,6 +54,10 @@ document.addEventListener('click', (e) =>{
 
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
+    }
+
+    if(targetEl.classList.contains('remove-todo')){
+        parentEl.remove()
     }
 })
 
