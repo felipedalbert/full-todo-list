@@ -11,13 +11,9 @@ let oldInputValue
 
 //funcoes
 
-const addNewTodo = (text) =>{
-    let nameTodo = todoList.querySelectorAll('h3')  
+const addNewTodo = (text) =>{ 
 
-    if(Array.from(nameTodo).some(h3 => h3.textContent.trim() == text.trim())){
-        alert('Você ja adicionou isso na lista')
-        return
-    }
+    if(isRepeatedTodo(text)) return
 
     todoList.innerHTML += `
         <div class="todo">
@@ -45,18 +41,24 @@ const toggleForms = () =>{
 }
 
 const updateTodo = (text) =>{
-    console.log(text)
     const todos = document.querySelectorAll('.todo')
 
     todos.forEach((todo) =>{
         let todoTitle = todo.querySelector('h3')
 
-        console.log(todoTitle.innerText === oldInputValue)
-
         if(todoTitle.innerText === oldInputValue){
             todoTitle.innerText = text
         }
     })
+}
+
+const isRepeatedTodo = (text)=>{
+    let namesTodo = todoList.querySelectorAll('h3')
+
+    if(Array.from(namesTodo).some(h3 => h3.textContent.trim() == text.trim())){
+        alert('Você ja adicionou isso na lista')
+        return true
+    }
 }
 
 //eventos
@@ -104,7 +106,11 @@ cancelEditBtn.addEventListener('click', (e) =>{
 editForm.addEventListener('submit', (e) =>{
     e.preventDefault()
 
-    if(editInput.value) updateTodo(editInput.value)
+    if(isRepeatedTodo(editInput.value)){
+       return 
+    }else if(editInput.value){
+        updateTodo(editInput.value)
+    }
     
     toggleForms()
 })
