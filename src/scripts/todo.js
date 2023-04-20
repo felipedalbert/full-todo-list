@@ -87,10 +87,17 @@ const filterTodo = (select) =>{
         if(selectOption === 'all'){
             todo.classList.remove('hide')
         }else if(selectOption === 'done'){
-            
-            if(!todo.classList.contains('done')) todo.classList.add('hide')
+            if(todo.classList.contains('done')){
+                todo.classList.remove('hide');
+            }else{
+                todo.classList.add('hide');
+            }
         }else{
-            if(todo.classList.contains('done')) todo.classList.add('hide')
+            if(!todo.classList.contains('done')){
+                todo.classList.remove('hide');
+            }else{
+                todo.classList.add('hide');
+            }
         }
     })
      
