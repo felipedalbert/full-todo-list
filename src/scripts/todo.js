@@ -8,6 +8,7 @@ const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const filterSelect = document.querySelector("#filter-select");
+console.log(filterSelect.value)
 
 let oldInputValue
 
@@ -78,8 +79,8 @@ const searchTodo = (e) => {
     })
 }
 
-const filterTodo = (select) =>{
-    const selectOption = select.target.value
+const filterTodo = () =>{
+    const selectOption = filterSelect.value
     const todos = document.querySelectorAll('.todo')
 
     todos.forEach(todo => {
@@ -87,17 +88,9 @@ const filterTodo = (select) =>{
         if(selectOption === 'all'){
             todo.classList.remove('hide')
         }else if(selectOption === 'done'){
-            if(todo.classList.contains('done')){
-                todo.classList.remove('hide');
-            }else{
-                todo.classList.add('hide');
-            }
+            todo.classList.toggle('hide', !todo.classList.contains('done'))
         }else{
-            if(!todo.classList.contains('done')){
-                todo.classList.remove('hide');
-            }else{
-                todo.classList.add('hide');
-            }
+            todo.classList.toggle('hide', todo.classList.contains('done'))
         }
     })
      
@@ -165,6 +158,4 @@ searchInput.addEventListener('input', (e) =>{
     searchTodo(e)
 })
 
-filterSelect.addEventListener('change', (select) =>{
-    filterTodo(select)
-})
+filterSelect.addEventListener('change', filterTodo)
