@@ -63,7 +63,7 @@ const isRepeatedTodo = (text)=>{
     }
 }
 
-const filterTodo = (e) => {
+const searchTodo = (e) => {
 
     const searchTerm = e.target.value.trim().toLowerCase();
     
@@ -135,5 +135,5 @@ editForm.addEventListener('submit', (e) =>{
 searchInput.addEventListener('input', (e) =>{
     e.preventDefault()
 
-    filterTodo(e)
+    searchTodo(e)
 })
