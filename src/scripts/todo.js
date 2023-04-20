@@ -78,6 +78,24 @@ const searchTodo = (e) => {
     })
 }
 
+const filterTodo = (select) =>{
+    const selectOption = select.target.value
+    const todos = document.querySelectorAll('.todo')
+
+    todos.forEach(todo => {
+
+        if(selectOption === 'all'){
+            todo.classList.remove('hide')
+        }else if(selectOption === 'done'){
+            
+            if(!todo.classList.contains('done')) todo.classList.add('hide')
+        }else{
+            if(todo.classList.contains('done')) todo.classList.add('hide')
+        }
+    })
+     
+}
+
 //eventos
 todoForm.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -100,6 +118,8 @@ document.addEventListener('click', (e) =>{
 
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
+
+        filterTodo()
     }
 
     if(targetEl.classList.contains('edit-todo')){
@@ -136,4 +156,8 @@ searchInput.addEventListener('input', (e) =>{
     e.preventDefault()
 
     searchTodo(e)
+})
+
+filterSelect.addEventListener('change', (select) =>{
+    filterTodo(select)
 })
