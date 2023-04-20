@@ -8,11 +8,11 @@ const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const filterSelect = document.querySelector("#filter-select");
-console.log(filterSelect.value)
-
 let oldInputValue
+let todos
 
 //funcoes
+const updateTodoList = setInterval(() => todos = document.querySelectorAll('.todo'), 100)
 
 const addNewTodo = (text) =>{ 
 
@@ -44,8 +44,6 @@ const toggleForms = () =>{
 }
 
 const updateTodo = (text) =>{
-    const todos = document.querySelectorAll('.todo')
-
     todos.forEach((todo) =>{
         let todoTitle = todo.querySelector('h3')
 
@@ -65,10 +63,8 @@ const isRepeatedTodo = (text)=>{
 }
 
 const searchTodo = (e) => {
-
     const searchTerm = e.target.value.trim().toLowerCase();
-    
-    const todos = document.querySelectorAll('.todo');
+
     todos.forEach(todo => {
         const todoTitle = todo.querySelector('h3');
         console.log(todo)
@@ -81,7 +77,6 @@ const searchTodo = (e) => {
 
 const filterTodo = () =>{
     const selectOption = filterSelect.value
-    const todos = document.querySelectorAll('.todo')
 
     todos.forEach(todo => {
 
@@ -109,12 +104,7 @@ todoForm.addEventListener('submit', (e)=>{
 
 document.addEventListener('click', (e) =>{
     const targetEl = e.target
-    const parentEl = targetEl.closest('.todo')
-    let todoTitle
-
-    if(parentEl && parentEl.querySelector('h3')){
-        todoTitle = parentEl.querySelector('h3').innerText
-    }
+    const parentEl = targetEl.closest('.todo') 
 
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
@@ -124,6 +114,8 @@ document.addEventListener('click', (e) =>{
 
     if(targetEl.classList.contains('edit-todo')){
         toggleForms()
+
+        let todoTitle = parentEl.querySelector('h3').innerText
 
         editInput.value = todoTitle
         oldInputValue = todoTitle
@@ -152,10 +144,6 @@ editForm.addEventListener('submit', (e) =>{
     toggleForms()
 })
 
-searchInput.addEventListener('input', (e) =>{
-    e.preventDefault()
-
-    searchTodo(e)
-})
+searchInput.addEventListener('input', (e) => searchTodo(e))
 
 filterSelect.addEventListener('change', filterTodo)
