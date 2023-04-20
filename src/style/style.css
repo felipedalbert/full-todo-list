@@ -137,6 +137,10 @@ select {
     transition: ease-in-out 0.3s;
 }
 
+.todo.hide{
+    display: none;
+}
+
 .todo h3 {
     flex: 1;
     font-size: 0.9rem;

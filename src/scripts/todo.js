@@ -63,6 +63,21 @@ const isRepeatedTodo = (text)=>{
     }
 }
 
+const filterTodo = (e) => {
+
+    const searchTerm = e.target.value.trim().toLowerCase();
+    
+    const todos = document.querySelectorAll('.todo');
+    todos.forEach(todo => {
+        const todoTitle = todo.querySelector('h3');
+        console.log(todo)
+        const todoTitleText = todoTitle.innerText.trim().toLowerCase();
+
+        todo.classList.toggle('hide', !todoTitleText.includes(searchTerm))
+
+    })
+}
+
 //eventos
 todoForm.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -117,6 +132,8 @@ editForm.addEventListener('submit', (e) =>{
     toggleForms()
 })
 
-searchInput.addEventListener('change', (e) =>{
-    
+searchInput.addEventListener('input', (e) =>{
+    e.preventDefault()
+
+    filterTodo(e)
 })
