@@ -62,20 +62,20 @@ const isRepeatedTodo = (text)=>{
     }
 }
 
-const searchTodo = (e) => {
+const searchTodo = (e) => {  
+    filterSelect.value = 'all'  
     const searchTerm = e.target.value.trim().toLowerCase();
 
     todos.forEach(todo => {
         const todoTitle = todo.querySelector('h3');
-        console.log(todo)
         const todoTitleText = todoTitle.innerText.trim().toLowerCase();
 
         todo.classList.toggle('hide', !todoTitleText.includes(searchTerm))
-
     })
 }
 
 const filterTodo = () =>{
+    searchInput.value = ''
     const selectOption = filterSelect.value
 
     todos.forEach(todo => {
