@@ -7,6 +7,7 @@ const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
+const eraseButton = document.querySelector("#erase-button");
 const filterSelect = document.querySelector("#filter-select");
 let oldInputValue
 let todos
@@ -44,7 +45,8 @@ const toggleForms = () =>{
 }
 
 const updateTodo = (text) =>{
-    todos.forEach((todo) =>{
+
+    todos.forEach(todo =>{
         let todoTitle = todo.querySelector('h3')
 
         if(todoTitle.innerText === oldInputValue){
@@ -115,10 +117,10 @@ document.addEventListener('click', (e) =>{
     if(targetEl.classList.contains('edit-todo')){
         toggleForms()
 
-        let todoTitle = parentEl.querySelector('h3').innerText
+        editInput.value = parentEl.querySelector('h3').innerText
+        oldInputValue = parentEl.querySelector('h3').innerText
 
-        editInput.value = todoTitle
-        oldInputValue = todoTitle
+        editInput.focus()
     }
 
     if(targetEl.classList.contains('remove-todo')){
@@ -142,6 +144,8 @@ editForm.addEventListener('submit', (e) =>{
     }
     
     toggleForms()
+
+    todoInput.focus()
 })
 
 searchInput.addEventListener('input', (e) => searchTodo(e))
