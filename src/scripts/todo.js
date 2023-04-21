@@ -151,3 +151,5 @@ editForm.addEventListener('submit', (e) =>{
 searchInput.addEventListener('input', (e) => searchTodo(e))
 
 filterSelect.addEventListener('change', filterTodo)
+
+eraseButton.addEventListener('click', () => searchInput.value = '')
