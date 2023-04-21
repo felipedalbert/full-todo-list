@@ -64,9 +64,9 @@ const isRepeatedTodo = (text)=>{
     }
 }
 
-const searchTodo = (e) => {  
+const searchTodo = () => {  
     filterSelect.value = 'all'  
-    const searchTerm = e.target.value.trim().toLowerCase();
+    const searchTerm = searchInput.value.trim().toLowerCase();
 
     todos.forEach(todo => {
         const todoTitle = todo.querySelector('h3');
@@ -148,8 +148,11 @@ editForm.addEventListener('submit', (e) =>{
     todoInput.focus()
 })
 
-searchInput.addEventListener('input', (e) => searchTodo(e))
+searchInput.addEventListener('input', (e) => searchTodo())
 
 filterSelect.addEventListener('change', filterTodo)
 
-eraseButton.addEventListener('click', () => searchInput.value = '')
+eraseButton.addEventListener('click', () => {
+    searchInput.value = ''
+    searchTodo()
+})
