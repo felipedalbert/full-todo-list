@@ -10,6 +10,8 @@ const searchInput = document.querySelector("#search-input");
 const eraseButton = document.querySelector("#erase-button");
 const filterSelect = document.querySelector("#filter-select");
 const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
+let idTodo
+let objTodo
 let oldInputValue
 let todos
 
@@ -74,8 +76,7 @@ const toggleForms = () =>{
     todoList.classList.toggle('hide')
 }
 
-const updateTodo = (text) =>{
-
+const updateTodo = (text, objTodo) =>{
     todos.forEach(todo =>{
         let todoTitle = todo.querySelector('h3')
 
@@ -83,6 +84,9 @@ const updateTodo = (text) =>{
             todoTitle.innerText = text
         }
     })
+
+    objTodo[0].text = text
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
 }
 
 const isRepeatedTodo = (text)=>{
@@ -141,8 +145,8 @@ document.addEventListener('click', (e) =>{
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
 
-        const idParentEl = parentEl.dataset.id
-        const objTodo = todoItems.filter(todo => todo.id == idParentEl)
+        idTodo = parentEl.dataset.id
+        objTodo = todoItems.filter(todo => todo.id == idTodo)
         
         objTodo[0].done = objTodo[0].done ? false : true
         
@@ -156,6 +160,7 @@ document.addEventListener('click', (e) =>{
 
         editInput.value = parentEl.querySelector('h3').innerText
         oldInputValue = parentEl.querySelector('h3').innerText
+        idTodo = parentEl.dataset.id
 
         editInput.focus()
     }
@@ -177,7 +182,8 @@ editForm.addEventListener('submit', (e) =>{
     if(isRepeatedTodo(editInput.value)){
        return 
     }else if(editInput.value){
-        updateTodo(editInput.value)
+        objTodo = todoItems.filter(todo => todo.id == idTodo)
+        updateTodo(editInput.value, objTodo)
     }
     
     toggleForms()
