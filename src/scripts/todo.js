@@ -16,6 +16,26 @@ let todos
 //funcoes
 const updateTodoList = setInterval(() => todos = document.querySelectorAll('.todo'), 100)
 
+const renderTodos = () => {
+    todoItems.forEach(todo => {
+        console.log(todo)
+        todoList.innerHTML += `
+          <div class="todo ${todo.done ? 'done' : ''}" data-id="${todo.id}">
+            <h3>${todo.text}</h3>
+            <button class="finish-todo" title="check sua tarefa">
+              <i class="fa-solid fa-check"></i>
+            </button>
+            <button class="edit-todo" title="edite sua tarefa">
+              <i class="fa-solid fa-pen"></i>
+            </button>
+            <button class="remove-todo" title="exclua sua tarefa">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        `;
+      });
+}
+
 const addNewTodo = (text) =>{ 
 
     if(isRepeatedTodo(text)) return
@@ -121,6 +141,13 @@ document.addEventListener('click', (e) =>{
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
 
+        const idParentEl = parentEl.dataset.id
+        const objTodo = todoItems.filter(todo => todo.id == idParentEl)
+        
+        objTodo[0].done = objTodo[0].done ? false : true
+        
+        localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
         filterTodo()
     }
 
@@ -166,3 +193,5 @@ eraseButton.addEventListener('click', () => {
     searchInput.value = ''
     searchTodo()
 })
+
+window.addEventListener('load', renderTodos)
