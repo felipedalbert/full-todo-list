@@ -9,6 +9,7 @@ const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseButton = document.querySelector("#erase-button");
 const filterSelect = document.querySelector("#filter-select");
+const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
 let oldInputValue
 let todos
 
@@ -19,9 +20,18 @@ const addNewTodo = (text) =>{
 
     if(isRepeatedTodo(text)) return
 
+    const newTodo = {
+        id: Date.now(),
+        text: text,
+        done: false
+    };
+    
+    todoItems.push(newTodo);
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
     todoList.innerHTML += `
-        <div class="todo">
-            <h3>${text}</h3>
+        <div class="todo" data-id="${newTodo.id}">
+            <h3>${newTodo.text}</h3>
             <button class="finish-todo" title="check sua tarefa">
                 <i class="fa-solid fa-check"></i>
             </button>
