@@ -20,7 +20,7 @@ const updateTodoList = setInterval(() => todos = document.querySelectorAll('.tod
 
 const renderTodos = () => {
     todoItems.forEach(todo => {
-        console.log(todo)
+
         todoList.innerHTML += `
           <div class="todo ${todo.done ? 'done' : ''}" data-id="${todo.id}">
             <h3>${todo.text}</h3>
@@ -166,6 +166,12 @@ document.addEventListener('click', (e) =>{
     }
 
     if(targetEl.classList.contains('remove-todo')){
+        idTodo = parentEl.dataset.id
+        objTodo = todoItems.findIndex(todo => todo.id == idTodo)
+
+        todoItems.splice(objTodo, 1)
+        localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
         parentEl.remove()
     }
 })
