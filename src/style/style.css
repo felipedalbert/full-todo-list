@@ -22,6 +22,8 @@ button {
     justify-content: center;
     align-items: center;
     transition: 0.4s;
+    border-radius: 3px;
+    height: 100%;
 }
 
 button:hover {
@@ -41,6 +43,14 @@ button i {
 input,
 select {
     padding: 0.25rem 0.5rem;
+    border: 1px solid #515151;
+    border-radius: 3px;
+    outline: none;
+}
+
+input:focus,
+select:focus{
+    border-color: #102f5e; 
 }
 
 .hide {
@@ -64,16 +74,29 @@ select {
 }
 
 /* Todo Form */
+#todo-form{
+    position: relative;
+}
+
 #todo-form,
 #edit-form {
     padding: 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc
 }
 
 #todo-form p,
 #edit-form p {
     margin-bottom: 0.5rem;
     font-weight: bold;
+}
+
+#todo-form .form-control{
+    position: relative;
+}
+
+#todo-form .form-control #trash-button{
+    position: absolute;
+    right: 0;
 }
 
 .form-control {

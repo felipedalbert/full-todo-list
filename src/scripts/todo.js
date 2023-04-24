@@ -8,6 +8,7 @@ const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseButton = document.querySelector("#erase-button");
+const trashButton = document.querySelector("#trash-button");
 const filterSelect = document.querySelector("#filter-select");
 const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
 let idTodo
@@ -20,7 +21,6 @@ const updateTodoList = setInterval(() => todos = document.querySelectorAll('.tod
 
 const renderTodos = () => {
     todoItems.forEach(todo => {
-
         todoList.innerHTML += `
           <div class="todo ${todo.done ? 'done' : ''}" data-id="${todo.id}">
             <h3>${todo.text}</h3>
@@ -204,6 +204,14 @@ filterSelect.addEventListener('change', filterTodo)
 eraseButton.addEventListener('click', () => {
     searchInput.value = ''
     searchTodo()
+})
+
+trashButton.addEventListener('click', () =>{
+    const resposta = confirm("Você está prestes a excluir todos os seus itens")
+    if(resposta){
+        localStorage.clear()
+        location.reload()
+    }
 })
 
 window.addEventListener('load', renderTodos)
