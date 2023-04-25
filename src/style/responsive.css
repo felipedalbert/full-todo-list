@@ -46,7 +46,6 @@
     #todo-form .form-control #trash-button{
         position: static;
         background-color: #102f5e;
-        
     }
 
     #todo-form .form-control #trash-button:hover > i{
@@ -68,7 +67,20 @@
 }
 
 @media (max-width: 375px) {
+    #todo-form .form-control input{
+        flex: 1 1 100%;
+        margin-right: 0;
+        height: 32.59px;
+    }
+        
+    #todo-form .form-control button{
+        flex: 1 1 48%;
+    }
 
+    #todo-form .form-control button:nth-of-type(1){
+        order: 0;
+        flex: 1 1 48%;
+    }
     .todo button {
         margin-left: unset;
         transform: scale(.85);
