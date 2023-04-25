@@ -49,7 +49,7 @@ select:focus{
 /* Todo Header */
 .todo-container {
     max-width: 450px;
-    margin: 3rem auto 0;
+    margin: 3rem auto;
     background-color: #fdfdfd;
     padding: 1.5rem;
     border-radius: 15px;
@@ -101,7 +101,6 @@ select:focus{
     color: #444;
 }
 
-/* Todo Toolbar */
 #toolbar {
     padding: 1rem;
     border-bottom: 1px solid #ccc;
@@ -140,7 +139,6 @@ select:focus{
     flex: 1;
 }
 
-/* Todo List */
 .todo {
     display: flex;
     align-items: center;
