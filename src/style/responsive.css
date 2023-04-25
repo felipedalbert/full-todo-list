@@ -29,18 +29,24 @@
     }
 
     #todo-form .form-control input{
-        flex: 1 1 100%;
+        flex: 1 1 50%;
         margin-right: 0;
         height: 32.59px;
     }
     
     #todo-form .form-control button{
-        flex: 1 1 48%;
+        flex: 1;
+    }
+
+    #todo-form .form-control button:nth-of-type(1){
+        order: 1;
+        flex: 1 1 100%;
     }
 
     #todo-form .form-control #trash-button{
         position: static;
         background-color: #102f5e;
+        
     }
 
     #todo-form .form-control #trash-button:hover > i{
