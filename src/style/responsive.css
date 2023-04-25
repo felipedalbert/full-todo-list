@@ -78,7 +78,6 @@
     }
 
     #todo-form .form-control button:nth-of-type(1){
-        order: 0;
         flex: 1 1 48%;
     }
     .todo button {
