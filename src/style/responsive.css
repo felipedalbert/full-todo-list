@@ -1,0 +1,75 @@
+@media (max-width: 516px) {
+    body{
+        padding: 20px;
+    }
+
+    button:hover {
+        background-color: #fff;
+    }
+    
+    button:hover > i {
+        color: #102f5e;
+    }
+
+    .todo-container {
+        margin: 0;
+        background-color: #fdfdfd;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    #todo-form .form-control{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        
+    }
+
+    #todo-form .form-control input{
+        flex: 1 1 100%;
+        margin-right: 0;
+        height: 32.59px;
+    }
+    
+    #todo-form .form-control button{
+        flex: 1 1 48%;
+    }
+
+    #todo-form .form-control #trash-button{
+        position: static;
+        background-color: #102f5e;
+    }
+
+    #todo-form .form-control #trash-button:hover > i{
+        animation: unset;
+    }
+
+    #todo-form .form-control #trash-button > i{
+        color: #fff;
+    }
+
+    #todo-form,
+    #edit-form, .todo {
+        padding: 0.8rem;
+    }
+
+    .todo h3 {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+
+    .todo button {
+        margin-left: unset;
+        transform: scale(.85);
+    }
+
+    .todo h3{
+        max-height: 32px;
+        overflow-y: scroll;
+    }
+}
