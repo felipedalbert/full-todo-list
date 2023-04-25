@@ -12,7 +12,6 @@ button {
     align-items: center;
     transition: 0.4s;
     border-radius: 3px;
-    height: 100%;
 }
 
 button:hover {
@@ -86,6 +85,32 @@ select:focus{
 #todo-form .form-control #trash-button{
     position: absolute;
     right: 0;
+    height: 32.59px;
+    background-color: #102f5e;
+    transition: ease .2s;
+}
+
+#todo-form .form-control #trash-button > i{
+    color: #fff;
+
+}
+
+#todo-form .form-control #trash-button:hover > i{
+    animation: trashBtn-vibrate .2s linear backwards;
+}
+
+#todo-form .form-control #trash-button:hover{
+    background-color: #0c2449;
+}
+
+@keyframes trashBtn-vibrate{
+    from{
+        transform: translateX(-1px);
+        opacity: .2;
+    }to{
+        transform: translateX(1px);
+        opacity: 1;
+    }
 }
 
 .form-control {
@@ -142,7 +167,7 @@ select:focus{
 .todo {
     display: flex;
     align-items: center;
-    padding: 1rem 1rem;
+    padding: 1rem;
     border-bottom: 1px solid #ddd;
     transition: ease-in-out 0.3s;
 }
@@ -157,7 +182,11 @@ select:focus{
 }
 
 .todo button {
-    margin-left: 0.4rem;
+    margin-left: .4rem;
+}
+
+.todo button:nth-of-type(1){
+    margin-left: .5rem;
 }
 
 .done {
