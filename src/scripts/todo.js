@@ -140,7 +140,7 @@ document.addEventListener('click', (e) =>{
         
         localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
-        filterTodo()
+        setTimeout(filterTodo, 350)
     }
 
     if(targetEl.classList.contains('edit-todo')){

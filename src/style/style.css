@@ -169,7 +169,7 @@ select:focus{
     align-items: center;
     padding: 1rem;
     border-bottom: 1px solid #ddd;
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.2s;
 }
 
 .todo.hide{
