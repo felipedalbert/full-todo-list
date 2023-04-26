@@ -110,10 +110,7 @@ const filterTodo = () =>{
         }
     })
 
-    localStorage.setItem('todoItems', JSON.stringify(todoItems));
-
     renderTodos()
-     
 }
 
 //eventos
