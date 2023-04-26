@@ -14,10 +14,8 @@ const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
 let idTodo
 let objTodo
 let oldInputValue
-let todos
 
 //funcoes
-const updateTodoList = setInterval(() => todos = document.querySelectorAll('.todo'), 100)
 
 const renderTodos = () => {
     todoList.innerHTML = ''
