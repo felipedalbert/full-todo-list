@@ -13,7 +13,6 @@ const filterSelect = document.querySelector("#filter-select");
 const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
 let idTodo
 let objTodo
-let oldInputValue
 
 //funcoes
 
@@ -114,6 +113,9 @@ const filterTodo = () =>{
 }
 
 //eventos
+
+window.addEventListener('load', renderTodos)
+
 todoForm.addEventListener('submit', (e)=>{
     e.preventDefault();
 
@@ -199,5 +201,3 @@ trashButton.addEventListener('click', () =>{
         location.reload()
     }
 })
-
-window.addEventListener('load', renderTodos)
