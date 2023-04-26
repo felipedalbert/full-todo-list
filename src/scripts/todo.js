@@ -80,6 +80,8 @@ const searchTodo = () => {
     filterSelect.value = 'all'  
     const searchTerm = searchInput.value.trim().toLowerCase();
 
+    console.log('oi')
+
     todoItems.forEach(todo => {
         const todoTitleText = todo.text.trim().toLowerCase();
 
@@ -91,7 +93,7 @@ const searchTodo = () => {
     })
 }
 
-const filterTodo = () =>{
+const filterTodo = (notRender) =>{
     searchInput.value = ''
     const selectOption = filterSelect.value
 
@@ -187,7 +189,7 @@ searchInput.closest('form').addEventListener('submit', (e)=>{
     e.preventDefault()
 })
 
-searchInput.addEventListener('input', () => searchTodo)
+searchInput.addEventListener('input', searchTodo)
 
 eraseButton.addEventListener('click', (e) => {
     searchInput.value = ''
