@@ -20,40 +20,12 @@ let todos
 const updateTodoList = setInterval(() => todos = document.querySelectorAll('.todo'), 100)
 
 const renderTodos = () => {
+    todoList.innerHTML = ''
+
     todoItems.forEach(todo => {
         todoList.innerHTML += `
-          <div class="todo ${todo.done ? 'done' : ''}" data-id="${todo.id}">
+            <div class="todo ${todo.done ? 'done' : ''} ${todo.visibility ? '': 'hide'}" data-id="${todo.id}">
             <h3>${todo.text}</h3>
-            <button class="finish-todo" title="check sua tarefa">
-              <i class="fa-solid fa-check"></i>
-            </button>
-            <button class="edit-todo" title="edite sua tarefa">
-              <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="remove-todo" title="exclua sua tarefa">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-        `;
-      });
-}
-
-const addNewTodo = (text) =>{ 
-
-    if(isRepeatedTodo(text)) return
-
-    const newTodo = {
-        id: Date.now(),
-        text: text,
-        done: false
-    };
-    
-    todoItems.push(newTodo);
-    localStorage.setItem('todoItems', JSON.stringify(todoItems));
-
-    todoList.innerHTML += `
-        <div class="todo" data-id="${newTodo.id}">
-            <h3>${newTodo.text}</h3>
             <button class="finish-todo" title="check sua tarefa">
                 <i class="fa-solid fa-check"></i>
             </button>
@@ -63,8 +35,26 @@ const addNewTodo = (text) =>{
             <button class="remove-todo" title="exclua sua tarefa">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-        </div>
-    `
+            </div>
+        `
+    })
+}
+
+const addNewTodo = (text) =>{ 
+
+    if(isRepeatedTodo(text)) return
+
+    const newTodo = {
+        id: Date.now(),
+        text: text,
+        done: false,
+        visibility: true
+    };
+    
+    todoItems.push(newTodo);
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
+    renderTodos()
 
     todoInput.value = ''
     todoInput.focus()
@@ -77,16 +67,9 @@ const toggleForms = () =>{
 }
 
 const updateTodo = (text, objTodo) =>{
-    todos.forEach(todo =>{
-        let todoTitle = todo.querySelector('h3')
-
-        if(todoTitle.innerText === oldInputValue){
-            todoTitle.innerText = text
-        }
-    })
-
     objTodo[0].text = text
     localStorage.setItem('todoItems', JSON.stringify(todoItems));
+    renderTodos()
 }
 
 const isRepeatedTodo = (text)=>{
@@ -102,11 +85,14 @@ const searchTodo = () => {
     filterSelect.value = 'all'  
     const searchTerm = searchInput.value.trim().toLowerCase();
 
-    todos.forEach(todo => {
-        const todoTitle = todo.querySelector('h3');
-        const todoTitleText = todoTitle.innerText.trim().toLowerCase();
+    todoItems.forEach(todo => {
+        const todoTitleText = todo.text.trim().toLowerCase();
 
-        todo.classList.toggle('hide', !todoTitleText.includes(searchTerm))
+        todo.visibility = !todoTitleText.includes(searchTerm) ? false : true
+
+        renderTodos()
+
+        console.log(todo)
     })
 }
 
@@ -114,16 +100,18 @@ const filterTodo = () =>{
     searchInput.value = ''
     const selectOption = filterSelect.value
 
-    todos.forEach(todo => {
+    todoItems.forEach(todo => {
 
         if(selectOption === 'all'){
-            todo.classList.remove('hide')
+            todo.visibility = true
         }else if(selectOption === 'done'){
-            todo.classList.toggle('hide', !todo.classList.contains('done'))
+            todo.visibility = todo.done ? true : false
         }else{
-            todo.classList.toggle('hide', todo.classList.contains('done'))
+            todo.visibility = todo.done ? false : true
         }
     })
+
+    renderTodos()
      
 }
 
@@ -159,7 +147,7 @@ document.addEventListener('click', (e) =>{
         toggleForms()
 
         editInput.value = parentEl.querySelector('h3').innerText
-        oldInputValue = parentEl.querySelector('h3').innerText
+
         idTodo = parentEl.dataset.id
 
         editInput.focus()
@@ -172,7 +160,7 @@ document.addEventListener('click', (e) =>{
         todoItems.splice(objTodo, 1)
         localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
-        parentEl.remove()
+        renderTodos()
     }
 })
 
