@@ -141,7 +141,7 @@ document.addEventListener('click', (e) =>{
         
         localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
-        setTimeout(filterTodo, 350)
+        if(filterSelect.value !== 'all') setTimeout(filterTodo, 250)
         
     }
 
