@@ -70,9 +70,7 @@ const updateTodo = (text, objTodo) =>{
 }
 
 const isRepeatedTodo = (text)=>{
-    let namesTodo = todoList.querySelectorAll('h3')
-
-    if(Array.from(namesTodo).some(h3 => h3.textContent.trim() == text.trim())){
+    if(todoItems.some(todo => todo.text.trim() === text.trim())){
         alert('Você ja adicionou isso na lista')
         return true
     }
