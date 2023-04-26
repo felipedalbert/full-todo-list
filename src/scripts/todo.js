@@ -17,9 +17,11 @@ let objTodo
 //funcoes
 
 const renderTodos = () => {
+
     todoList.innerHTML = ''
 
     todoItems.forEach(todo => {
+        
         todoList.innerHTML += `
             <div class="todo ${todo.done ? 'done' : ''} ${todo.visibility ? '': 'hide'}" data-id="${todo.id}">
             <h3>${todo.text}</h3>
@@ -93,7 +95,7 @@ const searchTodo = () => {
     })
 }
 
-const filterTodo = (notRender) =>{
+const filterTodo = () =>{
     searchInput.value = ''
     const selectOption = filterSelect.value
 
@@ -108,13 +110,15 @@ const filterTodo = (notRender) =>{
         }
     })
 
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
     renderTodos()
      
 }
 
 //eventos
 
-window.addEventListener('load', renderTodos)
+window.addEventListener('load', filterTodo)
 
 todoForm.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -141,6 +145,7 @@ document.addEventListener('click', (e) =>{
         localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
         setTimeout(filterTodo, 350)
+        
     }
 
     if(targetEl.classList.contains('edit-todo')){
