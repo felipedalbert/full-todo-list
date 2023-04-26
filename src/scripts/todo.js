@@ -185,14 +185,18 @@ editForm.addEventListener('submit', (e) =>{
     todoInput.focus()
 })
 
-searchInput.addEventListener('input', (e) => searchTodo())
+searchInput.closest('form').addEventListener('submit', (e)=>{
+    e.preventDefault()
+})
 
-filterSelect.addEventListener('change', filterTodo)
+searchInput.addEventListener('input', () => searchTodo)
 
-eraseButton.addEventListener('click', () => {
+eraseButton.addEventListener('click', (e) => {
     searchInput.value = ''
     searchTodo()
 })
+
+filterSelect.addEventListener('change', filterTodo)
 
 trashButton.addEventListener('click', () =>{
     const resposta = confirm("Você está prestes a excluir todos os seus itens")
