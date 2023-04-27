@@ -82,7 +82,7 @@ select:focus{
     position: relative;
 }
 
-#todo-form .form-control #trash-button{
+#todo-form .form-control #clear-button{
     position: absolute;
     right: 0;
     height: 32.59px;
@@ -90,20 +90,20 @@ select:focus{
     transition: ease .2s;
 }
 
-#todo-form .form-control #trash-button > i{
+#todo-form .form-control #clear-button > i{
     color: #fff;
 
 }
 
-#todo-form .form-control #trash-button:hover > i{
-    animation: trashBtn-vibrate .2s linear backwards;
+#todo-form .form-control #clear-button:hover > i{
+    animation: clearBtn-vibrate .2s linear backwards;
 }
 
-#todo-form .form-control #trash-button:hover{
+#todo-form .form-control #clear-button:hover{
     background-color: #0c2449;
 }
 
-@keyframes trashBtn-vibrate{
+@keyframes clearBtn-vibrate{
     from{
         transform: translateX(-1px);
         opacity: .2;

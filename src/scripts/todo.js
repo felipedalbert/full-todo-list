@@ -8,7 +8,7 @@ const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 const searchInput = document.querySelector("#search-input");
 const eraseButton = document.querySelector("#erase-button");
-const trashButton = document.querySelector("#trash-button");
+const clearButton = document.querySelector("#clear-button");
 const filterSelect = document.querySelector("#filter-select");
 const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
 let idTodo
@@ -220,7 +220,7 @@ eraseButton.addEventListener('click', (e) => {
 
 filterSelect.addEventListener('change', filterTodo)
 
-trashButton.addEventListener('click', () =>{
+clearButton.addEventListener('click', () =>{
     const resposta = confirm("Você está prestes a excluir todos os seus itens")
     if(resposta){
         localStorage.clear()

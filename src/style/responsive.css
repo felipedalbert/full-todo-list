@@ -43,16 +43,16 @@
         flex: 1 1 100%;
     }
 
-    #todo-form .form-control #trash-button{
+    #todo-form .form-control #clear-button{
         position: static;
         background-color: #102f5e;
     }
 
-    #todo-form .form-control #trash-button:hover > i{
+    #todo-form .form-control #clear-button:hover > i{
         animation: unset;
     }
 
-    #todo-form .form-control #trash-button > i{
+    #todo-form .form-control #clear-button > i{
         color: #fff;
     }
 
