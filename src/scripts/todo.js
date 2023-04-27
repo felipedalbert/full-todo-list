@@ -182,7 +182,7 @@ document.addEventListener('click', (e) =>{
         todoItems.splice(objTodo, 1)
         localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
-        renderTodos()
+        filterTodo()
     }
 })
 
