@@ -14,8 +14,13 @@
     .todo-container {
         margin: 0;
         background-color: #fdfdfd;
-        padding: 10px;
+        padding: 10px 10px 18px 10px;
         border-radius: 10px;
+    }
+
+    .empty-todos h5{
+        margin-top: 18px;
+        
     }
 }
 
