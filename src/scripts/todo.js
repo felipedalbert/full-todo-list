@@ -111,6 +111,26 @@ const filterTodo = () =>{
     })
 
     renderTodos()
+
+    switch (selectOption){
+        case 'done': 
+            if(todoItems.every(todo => todo.done === false)){
+                todoList.innerHTML = `
+                <div class="empty-todos">
+                        <h5>Nenhuma tarefa realizada</h5>
+                </div > `
+            }
+        return 
+        case 'todo': 
+            if(todoItems.every(todo => todo.done === true)){
+                todoList.innerHTML = `
+                <div class="empty-todos">
+                        <h5>Nenhuma tarefa pendente</h5>
+                </div > `
+            }
+        return
+    }
+    
 }
 
 //eventos

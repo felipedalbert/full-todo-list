@@ -189,6 +189,17 @@ select:focus{
     margin-left: .5rem;
 }
 
+.empty-todos{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.empty-todos h5{
+    margin-top: 24px;
+    color: #717171;
+}
+
 .done {
     background: #395169;
 }
@@ -198,3 +209,5 @@ select:focus{
     text-decoration: line-through;
     font-style: italic;
 }
+
+
