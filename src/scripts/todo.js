@@ -213,9 +213,12 @@ searchInput.closest('form').addEventListener('submit', (e)=>{
 
 searchInput.addEventListener('input', searchTodo)
 
-eraseButton.addEventListener('click', (e) => {
-    searchInput.value = ''
-    searchTodo()
+eraseButton.addEventListener('click', () => {
+    if (searchInput.value !== ''){
+        searchInput.value = ''
+        searchTodo()
+    }
+    
 })
 
 filterSelect.addEventListener('change', filterTodo)
