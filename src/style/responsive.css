@@ -29,8 +29,8 @@
     #todo-form .form-control{
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        
+        gap: 8rem; /* Safari 12+ */
+        grid-gap: 8rem; /* Safari 10-11 */   
     }
 
     #todo-form .form-control input{
