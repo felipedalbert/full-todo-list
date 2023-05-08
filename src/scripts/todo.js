@@ -82,16 +82,12 @@ const searchTodo = () => {
     filterSelect.value = 'all'  
     const searchTerm = searchInput.value.trim().toLowerCase();
 
-    console.log('oi')
-
     todoItems.forEach(todo => {
         const todoTitleText = todo.text.trim().toLowerCase();
 
         todo.visibility = !todoTitleText.includes(searchTerm) ? false : true
 
         renderTodos()
-
-        console.log(todo)
     })
 }
 
