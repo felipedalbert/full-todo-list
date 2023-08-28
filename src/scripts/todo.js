@@ -24,16 +24,16 @@ const renderTodos = () => {
         
         todoList.innerHTML += `
             <div class="todo ${todo.done ? 'done' : ''} ${todo.visibility ? '': 'hide'}" data-id="${todo.id}">
-            <h3>${todo.text}</h3>
-            <button class="finish-todo" title="check sua tarefa">
-                <i class="fa-solid fa-check"></i>
-            </button>
-            <button class="edit-todo" title="edite sua tarefa">
-                <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="remove-todo" title="exclua sua tarefa">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+                <h3>${todo.text}</h3>
+                <button class="finish-todo" title="check sua tarefa">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="edit-todo" title="edite sua tarefa">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="remove-todo" title="exclua sua tarefa">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
         `
     })
@@ -155,11 +155,11 @@ document.addEventListener('click', (e) =>{
         idTodo = parentEl.dataset.id
         objTodo = todoItems.filter(todo => todo.id == idTodo)
         
-        objTodo[0].done = objTodo[0].done ? false : true
+        objTodo[0].done = !objTodo[0].done
         
         localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
-        if(filterSelect.value !== 'all') setTimeout(filterTodo, 250)
+        if(filterSelect.value !== 'all') setTimeout(filterTodo, 300)
         
     }
 
