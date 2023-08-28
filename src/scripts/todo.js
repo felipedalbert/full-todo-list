@@ -85,7 +85,7 @@ const searchTodo = () => {
     todoItems.forEach(todo => {
         const todoTitleText = todo.text.trim().toLowerCase();
 
-        todo.visibility = !todoTitleText.includes(searchTerm) ? false : true
+        todo.visibility = todoTitleText.includes(searchTerm) ? true : false
 
         renderTodos()
     })
